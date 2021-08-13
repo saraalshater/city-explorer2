@@ -1,57 +1,54 @@
-// import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Card from 'react-bootstrap/Card'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+import { Row, Col } from 'react-bootstrap';
 
 
-// class Movies extends React.Component {
+class Movies extends React.Component {
 
+    render() {
+        return (
+            <>
 
-//     render() {
-//         return (
-//             <>
-// {
-//                    this.props.showCard && 
-//                     this.props.movies.map(element => {
-//                         return (<Card style={{ border: 'groove', width: '500px' }} >
-//                             <Card.Header  as="h5">
-//                                 {element.title}
-//                             </Card.Header>
-//                             <Card.Header  as="h5">
-//                                 <img src = {element.image_url}></img>
-//                             </Card.Header>
-//                             <Card.Header  as="h5">
-//                                Overview : {element.overview}
-//                             </Card.Header>
-                           
-//                             <Card.Header  as="h5">
-//                                Average votes : {element.average_votes}
-//                             </Card.Header>
-//                             <Card.Header  as="h5">
-//                               Total votes :  {element.total_votes}
-//                             </Card.Header>
-                          
-//                             <Card.Header  as="h5">
-//                               Popularity :  {element.popularity}
-//                             </Card.Header>
+                <Row >
+                <header >
+                    <h4>Movie List</h4>
+                </header>  
+                    {
+                        this.props.showCard &&
+                        this.props.movies.map(element => {
+                            return (
+                                <Col lg={4} className="cardMovie">
+                                    <br /><br />
+                                    <Card style={{ width: '28rem' }}>
+                                        <Card.Header className="text-center textCardHead" as="h4">{element.title}</Card.Header>
+                                        <Card.Body className="textCard">
+                                        <Card.Img variant="top" src={element.poster_path} />
+                                            <Card.Text className="text-left" >
+                                                <h6>Average Votes:</h6> {element.vote_average}
+                                                <h6>Conut Votes:</h6>  {element.vote_count}
+                                                <h6>Overview:</h6>{element.overview}
+                                                <h6>Popularity:</h6> {element.popularity}
+                                                <h6>Release Date :</h6> {element.release_date}
+                                            </Card.Text>
 
-//                             <Card.Header  as="h5">
-//                               Released on :  {element.released_on}
-//                             </Card.Header>
-//                         </Card>
-//                         )
-//                     })
-//                 }
-//             </>
-
-//         )
-
-//     }
-
-// }
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
 
 
 
+                            )
+                        })
+                    }
+
+                </Row>
+
+            </>
+        )
+    }
 
 
+}
 
-// export default Movies;
+export default Movies;
